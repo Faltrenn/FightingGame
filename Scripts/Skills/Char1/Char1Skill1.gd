@@ -4,5 +4,5 @@ extends Skill
 func _ready():
 	cooldown = 1.5
 
-func execute(player: Player):
+func execute(player: Player): pass
 	
