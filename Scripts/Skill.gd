@@ -1,12 +1,14 @@
-class_name Skill
 extends Node
+class_name Skill
 
 var in_cooldown = false
 var cooldown: float
 var timer: float = 0.0
 
-func _ready():
-	set_process(false)
+var player: Player
+
+func _init():
+	set_process(true)
 
 func reset_cooldown(delta: float):
 	timer += delta

@@ -1,22 +1,30 @@
 extends Entity
 class_name Player
 
-const projectile = preload("res://Scenes/projectile.tscn")
-
 @onready var fps_counter: Label = $"../UI/FPSCounter"
+
+@export var char_res: CharacterRes
+
+@export var skills: Array[Node]
+
+var look_input: Vector2 = Vector2.RIGHT
 
 func _ready():
 	init(100, 700)
+	
+	for i in range(0,4):
+		skills[i].set_script(char_res.skills[i])
 
 func _process(_delta):
-	var look_input = Input.get_vector("look_left", "look_right", "look_up", "look_down").normalized()
-	if Input.is_action_pressed("skill_1"):
-		var p = projectile.instantiate() as Projectile
-		get_node("/root").add_child(p)
-		p.position = position
-		p.init(look_input)
-	if Input.is_action_pressed("skill_2"):
-		pass
+	var l_input = Input.get_vector("look_left", "look_right", "look_up", "look_down").normalized()
+	if l_input:
+		look_input = l_input
+	
+	for i in range(0,4):
+		if Input.is_action_just_pressed("skill_" + str(i+1)):
+			var skill = skills[i] as Skill
+			if skill:
+				skill.execute(self)
 	
 	fps_counter.text = "FPS: " + str(Engine.get_frames_per_second())
 
