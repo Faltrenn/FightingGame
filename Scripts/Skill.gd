@@ -11,11 +11,11 @@ func _init():
 	set_process(true)
 
 func reset_cooldown(delta: float):
-	timer += delta
-	if timer >= cooldown:
-		timer = 0
-		in_cooldown = false
-		set_process(false)
+	if in_cooldown:
+		timer += delta
+		if timer >= cooldown:
+			timer = 0
+			in_cooldown = false
 
 func _process(delta):
 	reset_cooldown(delta)

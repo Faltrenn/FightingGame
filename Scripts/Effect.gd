@@ -8,20 +8,27 @@ var player: Player
 
 var timer: float
 
+func _init():
+	set_process(true)
 
-func init(_duration: float, _ticks: int, _player: Player):
+func init(_duration: float, _ticks: int, insta: bool, _player: Player):
 	duration = _duration
 	ticks = _ticks
 	delta_tick = _duration/_ticks
 	player = _player
+	if insta:
+		tick()
 
-func tick(): pass
+func tick():
+	ticks -= 1
+
+func end(): pass
 
 func _process(delta):
 	timer += delta
 	if timer >= delta_tick:
 		timer = 0
 		tick()
-		ticks -= 1
-		if ticks == 0:
+		if ticks == -1:
+			end()
 			queue_free()

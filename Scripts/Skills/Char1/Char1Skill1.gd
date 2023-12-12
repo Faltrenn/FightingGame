@@ -4,6 +4,7 @@ extends Skill
 const projectile = preload("res://Scenes/projectile.tscn")
 
 func _init():
+	super._init()
 	cooldown = 1.5
 
 func execute(_player: Player):
@@ -14,4 +15,3 @@ func execute(_player: Player):
 		p.position = player.position
 		p.init(player.look_input)
 		in_cooldown = true
-		set_process(true)
