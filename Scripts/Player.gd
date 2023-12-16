@@ -16,9 +16,7 @@ func _ready():
 		skills[i].set_script(char_res.skills[i])
 
 func _process(_delta):
-	var l_input = Input.get_vector("look_left", "look_right", "look_up", "look_down").normalized()
-	if l_input:
-		look_input = l_input
+	look_input = Input.get_vector("look_left", "look_right", "look_up", "look_down").normalized()
 	
 	for i in range(0,4):
 		if Input.is_action_just_pressed("skill_" + str(i+1)):
