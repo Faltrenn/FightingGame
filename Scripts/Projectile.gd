@@ -5,8 +5,10 @@ var direction: Vector2
 var speed: int
 var max_range: Vector2
 var initial_position: Vector2
+var player: Player
 
-func init(_direction: Vector2, _speed: int, _range: int):
+func init(_player: Player, _direction: Vector2, _speed: int, _range: int):
+	player = _player
 	direction = _direction
 	rotation = direction.angle()
 	max_range = abs(direction * _range)
@@ -21,4 +23,6 @@ func _physics_process(delta):
 			queue_free()
 
 func body_entered(body: Node2D):
-	print("Colidiu com: ", body.name)
+	var entity = body as Entity
+	if entity != player:
+		entity.make_damage(10)

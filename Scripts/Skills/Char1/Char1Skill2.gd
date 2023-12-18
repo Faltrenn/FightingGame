@@ -8,6 +8,7 @@ func _init():
 
 func execute(_player: Player):
 	if not in_cooldown:
-		var e = Core.spawn_node(_player, effect) as Effect
+		var e = effect.new()
+		_player.add_child(e)
 		e.init(3, 2, true, _player)
 		in_cooldown = true
