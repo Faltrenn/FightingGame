@@ -1,11 +1,10 @@
-class_name Char1Skill1
 extends Skill
 
 const projectile = preload("res://Scenes/projectile.tscn")
 
 func _init():
-	super._init()
 	cooldown = 1.5
+	super._init()
 
 func execute(_player: Player):
 	if not in_cooldown and _player.look_input:

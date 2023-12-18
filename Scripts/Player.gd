@@ -8,6 +8,9 @@ class_name Player
 @export var skills: Array[Node]
 
 var look_input: Vector2 = Vector2.RIGHT
+var move_input: Vector2 = Vector2.RIGHT
+
+var can_move: bool = true
 
 func _ready():
 	init(100, 700)
@@ -27,7 +30,8 @@ func _process(_delta):
 	fps_counter.text = "FPS: " + str(Engine.get_frames_per_second())
 
 func _physics_process(_delta):
-	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	velocity = direction * speed
+	move_input = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+	if can_move:
+		velocity = move_input * speed
 	
 	move_and_slide()
