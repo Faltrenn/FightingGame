@@ -3,13 +3,13 @@ extends Skill
 const projectile = preload("res://Scenes/projectile.tscn")
 
 func _init():
-	cooldown = 1.5
+	init(1.5)
 	super._init()
 
-func execute(_player: Player):
-	if not in_cooldown and _player.look_input:
+func execute(p_player: Player):
+	if not in_cooldown and p_player.look_input:
 		var p = projectile.instantiate() as Projectile
 		get_node("/root").add_child(p)
-		p.position = _player.position
-		p.init(_player, _player.look_input, 1200, 500)
-		in_cooldown = true
+		p.position = p_player.position
+		p.init(p_player, p_player.look_input, 1200, 500)
+		super.execute(p_player)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b63pekn72li88"]
 
-[ext_resource type="Script" path="res://Scripts/Projectile.gd" id="1_scniw"]
+[ext_resource type="Script" path="res://Scripts/Skills/CoreNodes/Projectile.gd" id="1_scniw"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xihyo"]
 radius = 10.0

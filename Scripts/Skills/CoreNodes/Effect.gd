@@ -11,11 +11,11 @@ var timer: float
 func _init():
 	set_process(true)
 
-func init(_duration: float, _ticks: int, insta: bool, _player: Player):
-	duration = _duration
-	ticks = _ticks
-	delta_tick = _duration/_ticks
-	player = _player
+func init(p_duration: float, p_ticks: int, insta: bool, p_player: Player):
+	duration = p_duration
+	ticks = p_ticks
+	delta_tick = p_duration/p_ticks
+	player = p_player
 	if insta:
 		tick()
 

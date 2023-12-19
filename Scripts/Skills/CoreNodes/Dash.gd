@@ -5,13 +5,13 @@ var player: Player
 var max_range: Vector2
 var initial_position: Vector2
 
-func init(_player: Player, _range: int, _direction: Vector2, _speed: int):
-	player = _player
+func init(p_player: Player, p_range: int, p_direction: Vector2, p_speed: int):
+	player = p_player
 	player.collision_mask = 0
 	initial_position = player.position
-	max_range = abs(_direction * _range)
+	max_range = abs(p_direction * p_range)
 	player.can_move = false
-	player.velocity = _direction * _speed
+	player.velocity = p_direction * p_speed
 	set_physics_process(true)
 
 func _physics_process(_delta):

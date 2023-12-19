@@ -6,9 +6,9 @@ func _init():
 	cooldown = 2
 	super._init()
 
-func execute(_player: Player):
+func execute(p_player: Player):
 	if not in_cooldown:
 		var e = effect.new()
-		_player.add_child(e)
-		e.init(3, 2, true, _player)
-		in_cooldown = true
+		p_player.add_child(e)
+		e.init(3, 2, true, p_player)
+		super.execute(p_player)

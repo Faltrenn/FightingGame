@@ -7,13 +7,13 @@ var max_range: Vector2
 var initial_position: Vector2
 var player: Player
 
-func init(_player: Player, _direction: Vector2, _speed: int, _range: int):
-	player = _player
-	direction = _direction
+func init(p_player: Player, p_direction: Vector2, p_speed: int, p_range: int):
+	player = p_player
+	direction = p_direction
 	rotation = direction.angle()
-	max_range = abs(direction * _range)
+	max_range = abs(direction * p_range)
 	initial_position = position
-	speed = _speed
+	speed = p_speed
 	set_process(true)
 
 func _physics_process(delta):
