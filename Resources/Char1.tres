@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterRes" load_steps=4 format=3 uid="uid://bpdinstvcguop"]
+
+[ext_resource type="Script" path="res://Resources/CharacterRes.gd" id="1_pmpom"]
+[ext_resource type="Script" path="res://Scripts/Skills/Char1/Char1Skill1.gd" id="2_obdy6"]
+[ext_resource type="Script" path="res://Scripts/Skills/Char1/Char1Skill2.gd" id="3_4nov1"]
+
+[resource]
+script = ExtResource("1_pmpom")
+name = "Alucard"
+skills = Array[Script]([ExtResource("2_obdy6"), ExtResource("3_4nov1"), null, null])

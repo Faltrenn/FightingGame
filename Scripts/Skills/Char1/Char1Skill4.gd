@@ -9,6 +9,6 @@ func _init():
 func execute(p_player: Player):
 	if not in_cooldown:
 		var ad = area_damage.new()
-		ad.init(3, 10, true, p_player)
 		add_child(ad)
+		ad.init(3, 10, true, p_player)
 		super.execute(p_player)
