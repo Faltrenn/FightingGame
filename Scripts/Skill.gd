@@ -1,11 +1,9 @@
-extends Node
+extends Node2D
 class_name Skill
 
 var in_cooldown = false
 var cooldown: float
 var timer: float = 0.0
-
-var player: Player
 
 func _init():
 	set_process(true)

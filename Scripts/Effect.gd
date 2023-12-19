@@ -1,5 +1,5 @@
 class_name Effect
-extends Node
+extends Node2D
 
 var duration: float
 var delta_tick: float
