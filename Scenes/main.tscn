@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c8rxkw2fl1hph"]
+[gd_scene load_steps=15 format=3 uid="uid://c8rxkw2fl1hph"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_gguk6"]
 [ext_resource type="Script" path="res://Scripts/Skills/Char1/Char1Skill1.gd" id="2_cn7yc"]
@@ -24,6 +24,8 @@ font_size = 40
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mgtbn"]
 size = Vector2(118, 127)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q505j"]
 
 [node name="Main" type="Node2D"]
 
@@ -77,3 +79,6 @@ flip_h = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Target"]
 position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_mgtbn")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+shape = SubResource("CircleShape2D_q505j")

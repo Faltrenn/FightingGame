@@ -11,7 +11,6 @@ var timer = Timer.new()
 func _init():
 	add_child(timer)
 	timer.connect("timeout", tick)
-	print("opa")
 
 func init(p_duration: float, p_ticks: int, insta: bool, p_player: Player):
 	duration = p_duration
@@ -21,7 +20,6 @@ func init(p_duration: float, p_ticks: int, insta: bool, p_player: Player):
 		tick()
 	timer.wait_time = p_duration/p_ticks
 	timer.start()
-	print("epa")
 
 func tick():
 	ticks -= 1

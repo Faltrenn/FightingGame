@@ -1,17 +1,26 @@
-extends Effect
+extends Node2D
 
-var collisions: Array[Entity] = []
+var timer = Timer.new()
+var player: Player
+
+var ticks: int
+
+var insta: bool
+
+var shape_cast: ShapeCast2D = ShapeCast2D.new()
+
+func init(duration: float, p_ticks: int, p_insta: bool, p_player: Player):
+	ticks = p_ticks
+	player = p_player
+	insta = p_insta
+	timer.wait_time = duration/p_ticks
+	timer.start()
 
 func _init():
-	var area = Area2D.new()
-	add_child(area)
-	area.connect("body_entered", body_entered)
-	area.connect("body_exited", body_exited)
-	var cs = CollisionShape2D.new()
+	add_child(shape_cast)
 	var shape = CircleShape2D.new()
 	shape.radius = 200
-	cs.shape = shape
-	area.add_child(cs)
+	shape_cast.shape = shape
 	
 	var mi = MeshInstance2D.new()
 	var mesh = CapsuleMesh.new()
@@ -19,25 +28,24 @@ func _init():
 	mesh.height = 400
 	
 	mi.mesh = mesh
-	area.add_child(mi)
+	shape_cast.add_child(mi)
 	
-	super._init()
+	add_child(timer)
+	timer.connect("timeout", tick)
 
-
-func body_entered(body: Node2D):
-	var entity = body as Entity
-	if entity and entity != player:
-		collisions.append(entity)
-
-func body_exited(body: Node2D):
-	var entity = body as Entity
-	if entity and entity != player:
-		collisions.remove_at(collisions.find(entity))
+func _process(_delta: float):
+	if insta:
+		tick()
+		set_process(false)
 
 func tick():
-	for collision in collisions:
-		collision.make_damage(14)
-	super.tick()
+	for collision in shape_cast.collision_result:
+		var entity = collision.collider as Entity
+		if entity:
+			entity.make_damage(14)
+	ticks -= 1
+	if ticks == 0:
+		queue_free()
 
 func end():
 	pass
