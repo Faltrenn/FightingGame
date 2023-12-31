@@ -17,6 +17,7 @@ func init(duration: float, p_ticks: int, p_insta: bool, p_player: Player):
 	timer.start()
 
 func _init():
+	shape_cast.target_position = Vector2.ZERO
 	add_child(shape_cast)
 	var shape = CircleShape2D.new()
 	shape.radius = 200

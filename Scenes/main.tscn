@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c8rxkw2fl1hph"]
+[gd_scene load_steps=14 format=3 uid="uid://c8rxkw2fl1hph"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_gguk6"]
 [ext_resource type="Script" path="res://Scripts/Skills/Char1/Char1Skill1.gd" id="2_cn7yc"]
@@ -19,13 +19,11 @@ size = Vector2(60, 90)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hpr3w"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_skb6c"]
-font_size = 40
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mgtbn"]
 size = Vector2(118, 127)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_q505j"]
+[sub_resource type="LabelSettings" id="LabelSettings_skb6c"]
+font_size = 40
 
 [node name="Main" type="Node2D"]
 
@@ -51,14 +49,6 @@ mesh = SubResource("QuadMesh_6kp4q")
 scale = Vector2(3, 4.5)
 shape = SubResource("RectangleShape2D_hpr3w")
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="FPSCounter" type="Label" parent="UI"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "FPS: 30"
-label_settings = SubResource("LabelSettings_skb6c")
-
 [node name="Target" type="CharacterBody2D" parent="."]
 position = Vector2(1410, 512)
 script = ExtResource("6_clbrx")
@@ -80,5 +70,10 @@ flip_h = true
 position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_mgtbn")
 
-[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
-shape = SubResource("CircleShape2D_q505j")
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="FPSCounter" type="Label" parent="UI"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "FPS: ??"
+label_settings = SubResource("LabelSettings_skb6c")
