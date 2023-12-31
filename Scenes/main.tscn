@@ -1,18 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://c8rxkw2fl1hph"]
+[gd_scene load_steps=9 format=3 uid="uid://c8rxkw2fl1hph"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_gguk6"]
-[ext_resource type="Script" path="res://Scripts/Skills/Char1/Char1Skill1.gd" id="2_cn7yc"]
-[ext_resource type="Script" path="res://Resources/CharacterRes.gd" id="2_s5ko8"]
-[ext_resource type="Script" path="res://Scripts/Skills/Char1/Char1Skill2.gd" id="4_wsrra"]
-[ext_resource type="Script" path="res://Scripts/Skills/Char1/Char1Skill3.gd" id="5_ckmlj"]
-[ext_resource type="Script" path="res://Scripts/Skills/Char1/Char1Skill4.gd" id="6_7qeu4"]
+[ext_resource type="Resource" uid="uid://bpdinstvcguop" path="res://Resources/Char1.tres" id="2_iy4ui"]
 [ext_resource type="Script" path="res://Scripts/Target.gd" id="6_clbrx"]
 [ext_resource type="Texture2D" uid="uid://cmb8ymxcbos52" path="res://Espantalho.png" id="6_l7teq"]
-
-[sub_resource type="Resource" id="Resource_ylehq"]
-script = ExtResource("2_s5ko8")
-name = "Alucard"
-skills = Array[Script]([ExtResource("2_cn7yc"), ExtResource("4_wsrra"), ExtResource("5_ckmlj"), ExtResource("6_7qeu4")])
 
 [sub_resource type="QuadMesh" id="QuadMesh_6kp4q"]
 size = Vector2(60, 90)
@@ -30,7 +21,7 @@ font_size = 40
 [node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("skills")]
 position = Vector2(894, 506)
 script = ExtResource("1_gguk6")
-char_res = SubResource("Resource_ylehq")
+char_res = ExtResource("2_iy4ui")
 skills = [NodePath("Skill1"), NodePath("Skill2"), NodePath("Skill3"), NodePath("Skill4")]
 
 [node name="Skill1" type="Node2D" parent="Player"]

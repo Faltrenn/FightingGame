@@ -16,7 +16,7 @@ var auto_walk_pos: Vector2 = Vector2.ZERO
 var auto_walk_dir: Vector2 = Vector2.ZERO
 
 func _ready():
-	init(100, 700)
+	super.init(100, 700)
 	
 	for i in range(0,4):
 		skills[i].set_script(char_res.skills[i])

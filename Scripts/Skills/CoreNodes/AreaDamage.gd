@@ -9,28 +9,25 @@ var insta: bool
 
 var shape_cast: ShapeCast2D = ShapeCast2D.new()
 
-func init(duration: float, p_ticks: int, p_insta: bool, p_player: Player):
+func init(	duration: float,
+			p_ticks: int,
+			p_insta: bool,
+			mi: MeshInstance2D,
+			shape: Shape2D,
+			target: Vector2,
+			p_player: Player):
 	ticks = p_ticks
 	player = p_player
 	insta = p_insta
 	timer.wait_time = duration/p_ticks
 	timer.start()
+	
+	shape_cast.target_position = target
+	shape_cast.shape = shape
+	shape_cast.add_child(mi)
 
 func _init():
-	shape_cast.target_position = Vector2.ZERO
 	add_child(shape_cast)
-	var shape = CircleShape2D.new()
-	shape.radius = 200
-	shape_cast.shape = shape
-	
-	var mi = MeshInstance2D.new()
-	var mesh = CapsuleMesh.new()
-	mesh.radius = 200
-	mesh.height = 400
-	
-	mi.mesh = mesh
-	shape_cast.add_child(mi)
-	
 	add_child(timer)
 	timer.connect("timeout", tick)
 
