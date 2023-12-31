@@ -1,12 +1,13 @@
 extends Skill
 
+
 func _init():
+	init(0) # Set cooldown
 	super._init()
 
-func reset_cooldown(delta: float):
-	super.reset_cooldown(delta)
-
-func _process(delta: float):
-	super._process(delta)
-
-func execute(_player: Player): pass
+func execute(p_player: Player):
+	if not in_cooldown:
+		
+		# Define logic
+		
+		super.execute(p_player)

@@ -2,8 +2,11 @@ extends Skill
 
 var area_damage = preload("res://Scripts/Skills/CoreNodes/AreaDamage.gd")
 
+const DURATION: float = 5
+const TICKS: float = 10
+
 func _init():
-	init(6)
+	init(10)
 	super._init()
 
 func execute(p_player: Player):
