@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8rxkw2fl1hph"]
+[gd_scene load_steps=9 format=3 uid="uid://c8rxkw2fl1hph"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_gguk6"]
-[ext_resource type="Resource" uid="uid://bpdinstvcguop" path="res://Resources/Char1.tres" id="2_nyehx"]
-[ext_resource type="Script" path="res://Scripts/Skills/CoreNodes/ShowArea.gd" id="5_t17ci"]
+[ext_resource type="Resource" uid="uid://bpdinstvcguop" path="res://Resources/Char1.tres" id="2_iy4ui"]
 [ext_resource type="Script" path="res://Scripts/Target.gd" id="6_clbrx"]
 [ext_resource type="Texture2D" uid="uid://cmb8ymxcbos52" path="res://Espantalho.png" id="6_l7teq"]
 
@@ -22,7 +21,7 @@ font_size = 40
 [node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("skills")]
 position = Vector2(894, 506)
 script = ExtResource("1_gguk6")
-char_res = ExtResource("2_nyehx")
+char_res = ExtResource("2_iy4ui")
 skills = [NodePath("Skill1"), NodePath("Skill2"), NodePath("Skill3"), NodePath("Skill4")]
 
 [node name="Skill1" type="Node2D" parent="Player"]
@@ -69,6 +68,3 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "FPS: ??"
 label_settings = SubResource("LabelSettings_skb6c")
-
-[node name="ShowArea" type="Node2D" parent="."]
-script = ExtResource("5_t17ci")

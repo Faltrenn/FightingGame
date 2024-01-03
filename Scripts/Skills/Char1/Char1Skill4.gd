@@ -24,5 +24,5 @@ func execute(p_player: Player):
 		mesh.height = RADIUS * 2
 		mi.mesh = mesh
 		
-		ad.init(DURATION, TICKS, true, mi, shape, Vector2.ZERO, p_player)
+		ad.init(DURATION, TICKS, true, false, shape, Vector2.ZERO, p_player)
 		super.execute(p_player)
