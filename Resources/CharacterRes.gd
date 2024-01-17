@@ -1,6 +1,5 @@
-extends Resource
-class_name CharacterRes
+class_name CharacterRes extends Resource
+
 
 @export var name: String
-
 @export var skills: Array[Script]
