@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://btfqpj8squ3t5"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_p8gjf"]
+[ext_resource type="Resource" uid="uid://bpdinstvcguop" path="res://Resources/Char1.tres" id="2_wgk5n"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_6kp4q"]
+size = Vector2(60, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpr3w"]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("skills")]
+position = Vector2(894, 506)
+script = ExtResource("1_p8gjf")
+char_res = ExtResource("2_wgk5n")
+skills = [NodePath("Skill1"), NodePath("Skill2"), NodePath("Skill3"), NodePath("Skill4")]
+
+[node name="Skill1" type="Node2D" parent="."]
+
+[node name="Skill2" type="Node2D" parent="."]
+
+[node name="Skill3" type="Node2D" parent="."]
+
+[node name="Skill4" type="Node2D" parent="."]
+
+[node name="Mesh" type="MeshInstance2D" parent="."]
+modulate = Color(0, 1, 1, 1)
+mesh = SubResource("QuadMesh_6kp4q")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+scale = Vector2(3, 4.5)
+shape = SubResource("RectangleShape2D_hpr3w")

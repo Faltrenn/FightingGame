@@ -1,15 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8rxkw2fl1hph"]
+[gd_scene load_steps=7 format=3 uid="uid://c8rxkw2fl1hph"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_gguk6"]
-[ext_resource type="Resource" uid="uid://dwrk7x8oso6le" path="res://Resources/Char2.tres" id="2_u6mri"]
+[ext_resource type="PackedScene" uid="uid://btfqpj8squ3t5" path="res://Scenes/player.tscn" id="1_ry2kp"]
 [ext_resource type="Script" path="res://Scripts/Skills/CoreNodes/ShowArea.gd" id="5_t17ci"]
 [ext_resource type="Script" path="res://Scripts/Target.gd" id="6_clbrx"]
 [ext_resource type="Texture2D" uid="uid://cmb8ymxcbos52" path="res://Espantalho.png" id="6_l7teq"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_6kp4q"]
-size = Vector2(60, 90)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpr3w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mgtbn"]
 size = Vector2(118, 127)
@@ -19,27 +13,7 @@ font_size = 40
 
 [node name="Main" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("skills")]
-position = Vector2(894, 506)
-script = ExtResource("1_gguk6")
-char_res = ExtResource("2_u6mri")
-skills = [NodePath("Skill1"), NodePath("Skill2"), NodePath("Skill3"), NodePath("Skill4")]
-
-[node name="Skill1" type="Node2D" parent="Player"]
-
-[node name="Skill2" type="Node2D" parent="Player"]
-
-[node name="Skill3" type="Node2D" parent="Player"]
-
-[node name="Skill4" type="Node2D" parent="Player"]
-
-[node name="Mesh" type="MeshInstance2D" parent="Player"]
-modulate = Color(0, 1, 1, 1)
-mesh = SubResource("QuadMesh_6kp4q")
-
-[node name="Hitbox" type="CollisionShape2D" parent="Player"]
-scale = Vector2(3, 4.5)
-shape = SubResource("RectangleShape2D_hpr3w")
+[node name="Player" parent="." instance=ExtResource("1_ry2kp")]
 
 [node name="Target" type="CharacterBody2D" parent="."]
 position = Vector2(1410, 512)

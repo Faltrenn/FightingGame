@@ -1,11 +1,9 @@
-extends Entity
-class_name Player
+class_name Player extends Entity
 
-@onready var fps_counter: Label = $"../UI/FPSCounter"
 
 @export var char_res: CharacterRes
 
-@export var skills: Array[Node2D]
+@export var skills: Array[Node2D] = [null, null, null, null]
 
 var look_input: Vector2 = Vector2.RIGHT
 var move_input: Vector2 = Vector2.RIGHT
@@ -20,6 +18,8 @@ func _ready():
 	
 	for i in range(0,4):
 		skills[i].set_script(char_res.skills[i])
+	
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 
 func _process(_delta: float):
 	var g_look = Input.get_vector("look_left", "look_right", "look_up", "look_down").normalized()
@@ -31,7 +31,7 @@ func _process(_delta: float):
 			var skill = skills[i] as Skill
 			if skill:
 				skill.execute()
-	fps_counter.text = "FPS: " + str(Engine.get_frames_per_second())
+	#fps_counter.text = "FPS: " + str(Engine.get_frames_per_second())
 	
 	if auto_walk_dir > Vector2.ZERO and position >= auto_walk_pos or auto_walk_dir < Vector2.ZERO and position <= auto_walk_pos:
 		reset_auto_walk()
