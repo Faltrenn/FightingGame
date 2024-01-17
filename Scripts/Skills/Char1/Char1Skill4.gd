@@ -10,7 +10,7 @@ func _init():
 	init(10)
 	super._init()
 
-func execute(p_player: Player):
+func execute():
 	if not in_cooldown:
 		var ad = AREA_DAMAGE.new()
 		add_child(ad)
@@ -24,5 +24,5 @@ func execute(p_player: Player):
 		mesh.height = RADIUS * 2
 		mi.mesh = mesh
 		
-		ad.init(DURATION, TICKS, true, false, shape, Vector2.ZERO, p_player)
-		super.execute(p_player)
+		ad.init(DURATION, TICKS, true, false, shape, Vector2.ZERO, player)
+		super.execute()

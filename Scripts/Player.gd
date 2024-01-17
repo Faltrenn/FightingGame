@@ -30,7 +30,7 @@ func _process(_delta: float):
 		if Input.is_action_just_pressed("skill_" + str(i+1)):
 			var skill = skills[i] as Skill
 			if skill:
-				skill.execute(self)
+				skill.execute()
 	fps_counter.text = "FPS: " + str(Engine.get_frames_per_second())
 	
 	if auto_walk_dir > Vector2.ZERO and position >= auto_walk_pos or auto_walk_dir < Vector2.ZERO and position <= auto_walk_pos:

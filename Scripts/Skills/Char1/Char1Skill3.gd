@@ -6,11 +6,11 @@ func _init():
 	cooldown = 1.2
 	super._init()
 
-func execute(p_player: Player):
-	var direction = p_player.move_input if p_player.move_input else p_player.look_input
+func execute():
+	var direction = player.move_input if player.move_input else player.look_input
 	if not in_cooldown and direction:
 		var d = DASH.new()
-		p_player.add_child(d)
-		d.init(p_player, 500, direction, p_player.speed * 2)
-		p_player.reset_auto_walk()
-		super.execute(p_player)
+		player.add_child(d)
+		d.init(player, 500, direction, player.speed * 2)
+		player.reset_auto_walk()
+		super.execute()

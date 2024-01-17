@@ -1,5 +1,7 @@
-class_name Projectile
-extends Area2D
+class_name Projectile extends Area2D
+
+
+signal hit(projectile: Projectile, body: Node2D)
 
 var direction: Vector2
 var speed: int
@@ -16,13 +18,11 @@ func init(p_player: Player, p_direction: Vector2, p_speed: int, p_range: int):
 	speed = p_speed
 	set_process(true)
 
-func _physics_process(delta):
+func _physics_process(delta:float):
 	if direction:
 		position += direction * speed * delta
 		if abs(position - initial_position) >= max_range:
 			queue_free()
 
 func body_entered(body: Node2D):
-	var entity = body as Entity
-	if entity != player:
-		entity.make_damage(10)
+	hit.emit(self, body)

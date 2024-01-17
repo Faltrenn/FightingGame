@@ -9,9 +9,9 @@ func _init():
 	init(1.3) # Set cooldown
 	super._init()
 
-func execute(p_player: Player):
-	if not in_cooldown and p_player.look_input:
-		var direction = p_player.look_input
+func execute():
+	if not in_cooldown and player.look_input:
+		var direction = player.look_input
 		
 		var sa = ShowArea.new()
 		get_node("/root").add_child(sa)
@@ -26,6 +26,6 @@ func execute(p_player: Player):
 		shape.size = Vector2(RANGE, 40)
 		var ad = AreaDamage.new()
 		sa.add_child(ad)
-		ad.init(.1, 1, true, true, shape, direction, p_player)
+		ad.init(.1, 1, true, true, shape, direction, player)
 		
-		super.execute(p_player)
+		super.execute()
