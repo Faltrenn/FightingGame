@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CharacterRes" load_steps=3 format=3 uid="uid://ds71pjdvttujx"]
+
+[ext_resource type="Script" path="res://Resources/CharacterRes.gd" id="1_trr1s"]
+[ext_resource type="Script" path="res://Scripts/Skills/Char1Skill1.gd" id="2_xpg6h"]
+
+[resource]
+script = ExtResource("1_trr1s")
+name = "Personagem 1"
+skills = Array[Script]([ExtResource("2_xpg6h"), null, null, null])

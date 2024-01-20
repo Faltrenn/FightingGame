@@ -1,3 +1,28 @@
-[gd_scene format=3 uid="uid://c8rxkw2fl1hph"]
+[gd_scene load_steps=6 format=3 uid="uid://c8rxkw2fl1hph"]
+
+[ext_resource type="PackedScene" uid="uid://b7f26b4uhxfgd" path="res://Scenes/Prefabs/player.tscn" id="1_behhn"]
+[ext_resource type="Script" path="res://Scripts/Core/Projectile.gd" id="2_dnu74"]
+[ext_resource type="Resource" uid="uid://ds71pjdvttujx" path="res://Resources/char1.tres" id="2_vsgj2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7o3cs"]
+radius = 5.0
+height = 20.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ix4di"]
+radius = 5.0
+height = 20.0
 
 [node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_behhn")]
+character = ExtResource("2_vsgj2")
+
+[node name="Projectile" type="Area2D" parent="."]
+position = Vector2(387, 575)
+script = ExtResource("2_dnu74")
+
+[node name="Hitbox" type="CollisionShape2D" parent="Projectile"]
+shape = SubResource("CapsuleShape2D_7o3cs")
+
+[node name="Mesh" type="MeshInstance2D" parent="Projectile"]
+mesh = SubResource("CapsuleMesh_ix4di")
