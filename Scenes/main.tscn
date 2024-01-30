@@ -1,28 +1,37 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8rxkw2fl1hph"]
+[gd_scene load_steps=4 format=3 uid="uid://c8rxkw2fl1hph"]
 
 [ext_resource type="PackedScene" uid="uid://b7f26b4uhxfgd" path="res://Scenes/Prefabs/player.tscn" id="1_behhn"]
-[ext_resource type="Script" path="res://Scripts/Core/Projectile.gd" id="2_dnu74"]
 [ext_resource type="Resource" uid="uid://ds71pjdvttujx" path="res://Resources/char1.tres" id="2_vsgj2"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7o3cs"]
-radius = 5.0
-height = 20.0
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ix4di"]
-radius = 5.0
-height = 20.0
+[ext_resource type="PackedScene" uid="uid://ccl5qjt0ayowv" path="res://Scenes/Components/skill_ui.tscn" id="3_fhyve"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_behhn")]
+[node name="Player" parent="." node_paths=PackedStringArray("skills_ui") instance=ExtResource("1_behhn")]
 character = ExtResource("2_vsgj2")
+skills_ui = [NodePath("../UI/HBoxContainer/SkillUI"), NodePath("../UI/HBoxContainer/SkillUI2"), NodePath("../UI/HBoxContainer/SkillUI3"), NodePath("../UI/HBoxContainer/SkillUI4")]
 
-[node name="Projectile" type="Area2D" parent="."]
-position = Vector2(387, 575)
-script = ExtResource("2_dnu74")
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Hitbox" type="CollisionShape2D" parent="Projectile"]
-shape = SubResource("CapsuleShape2D_7o3cs")
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -128.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 0
 
-[node name="Mesh" type="MeshInstance2D" parent="Projectile"]
-mesh = SubResource("CapsuleMesh_ix4di")
+[node name="SkillUI" parent="UI/HBoxContainer" instance=ExtResource("3_fhyve")]
+layout_mode = 2
+
+[node name="SkillUI2" parent="UI/HBoxContainer" instance=ExtResource("3_fhyve")]
+layout_mode = 2
+
+[node name="SkillUI3" parent="UI/HBoxContainer" instance=ExtResource("3_fhyve")]
+layout_mode = 2
+
+[node name="SkillUI4" parent="UI/HBoxContainer" instance=ExtResource("3_fhyve")]
+layout_mode = 2
