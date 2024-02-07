@@ -1,6 +1,8 @@
 class_name Char1Skill1 extends Skill
 
 
+const projectile = preload("res://Scenes/Prefabs/projectile.tscn")
+
 const RANGE := 600.0
 
 func _ready():
@@ -9,9 +11,8 @@ func _ready():
 
 func execute():
 	if cd_timer.is_stopped() and player.look_input:
-		var p = Projectile.new()
+		var p = projectile.instantiate() as Projectile
 		add_child(p)
-		p.start(player.global_position, player.look_input, RANGE)
+		p.start(player.global_position, player.look_input, RANGE, 100)
 		cd_timer.start()
 		super.execute()
-		

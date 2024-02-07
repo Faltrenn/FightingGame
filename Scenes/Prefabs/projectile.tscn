@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dokh0t154vkve"]
+
+[ext_resource type="Script" path="res://Scripts/Core/Projectile.gd" id="1_j672l"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bkgqs"]
+radius = 5.0
+height = 20.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_20n8h"]
+size = Vector2(10, 5)
+center_offset = Vector3(2.08165e-12, -7.5, 2.08165e-12)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7b7qk"]
+radius = 5.0
+height = 20.0
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("1_j672l")
+
+[node name="Mesh" type="MeshInstance2D" parent="."]
+mesh = SubResource("CapsuleMesh_bkgqs")
+
+[node name="Mesh2" type="MeshInstance2D" parent="."]
+mesh = SubResource("QuadMesh_20n8h")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_7b7qk")
