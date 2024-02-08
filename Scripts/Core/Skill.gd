@@ -4,7 +4,7 @@ class_name Skill extends Node
 signal on_execute()
 signal on_skill_ready()
 
-var cd_timer = Timer.new()
+var cd_timer := Timer.new()
 
 var cooldown: float
 
@@ -17,4 +17,5 @@ func _ready():
 	cd_timer.timeout.connect(func (): on_skill_ready.emit())
 
 func execute():
+	cd_timer.start()
 	on_execute.emit()

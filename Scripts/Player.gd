@@ -13,8 +13,9 @@ var skills: Array[Skill] = [null, null, null, null]
 func _ready():
 	if character:
 		skills = []
-		var counter = 0
+		var counter := -1
 		for skill in character.skills:
+			counter += 1
 			if skill:
 				var s = skill.new() as Skill
 				add_child(s)
@@ -23,13 +24,12 @@ func _ready():
 				skills_ui[counter].skill = s
 				continue
 			skills.append(skill)
-		counter += 1
 	else:
 		push_error("Character not defined in ", name)
 
 func _unhandled_input(event: InputEvent):
 	move_input = Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
-	
+
 	# NOTE: Fazer um sistema pra detectar se sefine look_input com gamepad ou mouse
 	if event is InputEventMouseMotion:
 		look_input = (event.position - global_position).normalized()
@@ -38,7 +38,7 @@ func _unhandled_input(event: InputEvent):
 		look_input = gamepad_input
 	if event.is_action_pressed("quit"):
 		get_tree().quit()
-	
+
 	for i in range(0,4):
 		if event.is_action_pressed("skill_" + str(i+1)):
 			if skills[i]:
@@ -46,5 +46,5 @@ func _unhandled_input(event: InputEvent):
 
 func _physics_process(_delta: float):
 	velocity = move_input * SPEED
-	
+
 	move_and_slide()

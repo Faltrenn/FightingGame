@@ -11,8 +11,7 @@ func _ready():
 
 func execute():
 	if cd_timer.is_stopped() and player.look_input:
-		var p = projectile.instantiate() as Projectile
+		var p := projectile.instantiate() as Projectile
 		add_child(p)
 		p.start(player.global_position, player.look_input, RANGE, 100)
-		cd_timer.start()
 		super.execute()

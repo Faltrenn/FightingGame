@@ -17,5 +17,5 @@ func start(p_position: Vector2, p_direction: Vector2, p_range: float, p_speed: f
 func _physics_process(delta: float):
 	if direction:
 		position += direction * speed * delta
-		if abs(initial_position - position).length() > max_range:
+		if abs(initial_position - position).length() >= max_range:
 			queue_free()
