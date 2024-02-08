@@ -6,8 +6,8 @@ func _ready():
 	super._ready()
 
 func execute():
-	if cd_timer.is_stopped():
+	if cd_timer.is_stopped() and player.look_input:
 		var dash = Dash.new()
 		player.add_child(dash)
-		dash.init(Vector2.RIGHT, 500, 200)
+		dash.init(player.look_input, 500, 200)
 		super.execute()
