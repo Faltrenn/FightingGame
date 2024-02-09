@@ -15,7 +15,7 @@ func start(p_position: Vector2, p_direction: Vector2, p_range: float, p_speed: f
 	rotation = direction.angle() - PI/2
 
 func _physics_process(delta: float):
-	if direction:
+	if direction: 
 		position += direction * speed * delta
 		if abs(initial_position - position).length() >= max_range:
 			queue_free()
