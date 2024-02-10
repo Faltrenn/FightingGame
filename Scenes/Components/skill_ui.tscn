@@ -7,13 +7,15 @@
 font_size = 40
 
 [node name="SkillUI" type="PanelContainer"]
-offset_right = 128.0
-offset_bottom = 128.0
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
 script = ExtResource("1_pglt1")
 
 [node name="Image" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("1_6orhd")
+expand_mode = 1
 
 [node name="Cooldown" type="ColorRect" parent="."]
 visible = false
