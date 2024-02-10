@@ -7,14 +7,28 @@ const SPEED := 300.0
 
 var move_input : Vector2:
 	get:
-		return Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+		var input := Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
+		if input and auto_walk:
+			auto_walk = false
+		return input
+
 var look_input : Vector2:
 	get: # NOTE: Fazer um sistema pra detectar se sefine look_input com gamepad ou mouse
 		var input = Input.get_vector("look_left", "look_right", "look_up", "look_down").normalized()
 		if not input:
 			input = move_input
-		return input if input else (get_viewport().get_mouse_position() - global_position).normalized()
-var mouse_position : Vector2
+		return input if input else (get_global_mouse_position() - global_position).normalized()
+
+var auto_walk_side := false
+var auto_walk := false
+var auto_walk_position : Vector2:
+	set(value):
+		auto_walk_side = (value - global_position) < Vector2.ZERO
+		auto_walk_position = value
+
+var auto_walk_distance : Vector2:
+	get:
+		return (auto_walk_position - global_position)
 
 @export var character: CharacterRes
 @export var skills_ui: Array[SkillUI] = [null, null, null, null]
@@ -40,7 +54,12 @@ func _ready():
 func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("quit"):
 		get_tree().quit()
-
+	if event.is_pressed():
+		if event is InputEventMouseButton:
+			if event.button_index == MOUSE_BUTTON_RIGHT:
+				auto_walk = true
+				auto_walk_position = event.position
+	
 	for i in range(0,4):
 		if event.is_action_pressed("skill_" + str(i+1)):
 			if skills[i]:
@@ -50,6 +69,14 @@ func _process(_delta:float):
 	aim.rotation = look_input.angle()
 
 func _physics_process(_delta: float):
-	velocity = move_input * SPEED
-
+	if move_input:
+		velocity = move_input * SPEED
+	elif auto_walk:
+		var diff = auto_walk_distance
+		if auto_walk_side and diff >= Vector2.ZERO or not auto_walk_side and diff < Vector2.ZERO:
+			auto_walk = false
+			velocity = Vector2.ZERO
+		else:
+			velocity = auto_walk_distance.normalized() * SPEED
+	
 	move_and_slide()
