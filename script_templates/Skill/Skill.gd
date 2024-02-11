@@ -6,4 +6,6 @@ func _ready():
 	super._ready()
 
 func execute():
-	pass
+	if timer.is_stopped():
+		# Logic
+		super.execute()

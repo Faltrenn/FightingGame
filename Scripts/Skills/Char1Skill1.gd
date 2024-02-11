@@ -11,7 +11,7 @@ func _ready():
 	super._ready()
 
 func execute():
-	if cd_timer.is_stopped() and player.look_input:
+	if timer.is_stopped() and player.look_input:
 		var p := projectile.instantiate() as Projectile
 		p.body_entered.connect(_on_hit)
 		add_child(p)

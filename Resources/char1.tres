@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="CharacterRes" load_steps=4 format=3 uid="uid://ds71pjdvttujx"]
+[gd_resource type="Resource" script_class="CharacterRes" load_steps=5 format=3 uid="uid://ds71pjdvttujx"]
 
 [ext_resource type="Script" path="res://Resources/CharacterRes.gd" id="1_trr1s"]
 [ext_resource type="Script" path="res://Scripts/Skills/Char1Skill1.gd" id="2_xpg6h"]
 [ext_resource type="Script" path="res://Scripts/Skills/Char1Skill2.gd" id="3_jhx3e"]
+[ext_resource type="Script" path="res://Scripts/Skills/Char1Skill3.gd" id="4_huam7"]
 
 [resource]
 script = ExtResource("1_trr1s")
 name = "Personagem 1"
-skills = Array[Script]([ExtResource("2_xpg6h"), ExtResource("3_jhx3e"), null, null])
+skills = Array[Script]([ExtResource("2_xpg6h"), ExtResource("3_jhx3e"), ExtResource("4_huam7"), null])

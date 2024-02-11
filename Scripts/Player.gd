@@ -17,7 +17,11 @@ var look_input : Vector2:
 		var input = Input.get_vector("look_left", "look_right", "look_up", "look_down").normalized()
 		if not input:
 			input = move_input
-		return input if input else (get_global_mouse_position() - global_position).normalized()
+		return input if input else (mouse_position - global_position).normalized()
+
+var mouse_position: Vector2:
+	get:
+		return get_global_mouse_position()
 
 var auto_walk_side := false
 var auto_walk := false
@@ -35,6 +39,8 @@ var auto_walk_distance : Vector2:
 var skills: Array[Skill] = [null, null, null, null]
 
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	
 	if character:
 		skills = []
 		var counter := -1

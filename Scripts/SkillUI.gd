@@ -24,4 +24,4 @@ func end():
 	set_process(false)
 
 func _process(_delta: float):
-	time.text = "%.1f" % skill.cd_timer.time_left
+	time.text = "%.1f" % skill.timer.time_left
