@@ -1,18 +1,17 @@
-class_name Hitbox
+class_name Hitbox extends Area2D
 
-static func circle(radius: float) -> Area2D:
-	var area = Area2D.new()
+
+func _init(shape: Shape2D):
 	var cs = CollisionShape2D.new()
-	cs.shape = CircleShape2D.new()
-	cs.shape.radius = radius
-	area.add_child(cs)
-	return area
+	cs.shape = shape
+	add_child(cs)
 
-static func rectangle(width: float, height: float) -> Area2D:
-	var area = Area2D.new()
-	var cs = CollisionShape2D.new()
-	cs.shape = RectangleShape2D.new()
-	cs.shape.size = Vector2(width, height)
-	area.add_child(cs)
-	return area
+static func circle(radius: float) -> Hitbox:
+	var shape = CircleShape2D.new()
+	shape.radius = radius
+	return Hitbox.new(shape)
 
+static func rectangle(width: float, height: float) -> Hitbox:
+	var shape = RectangleShape2D.new()
+	shape.size = Vector2(width, height) 
+	return Hitbox.new(shape)

@@ -23,6 +23,14 @@ var mouse_position: Vector2:
 	get:
 		return get_global_mouse_position()
 
+var can_move := true:
+	set(value):
+		if value:
+			auto_walk_position = auto_walk_position
+		else:
+			velocity = Vector2.ZERO
+		can_move = value
+
 var auto_walk_side := false
 var auto_walk := false
 var auto_walk_position : Vector2:
@@ -75,14 +83,17 @@ func _process(_delta:float):
 	aim.rotation = look_input.angle()
 
 func _physics_process(_delta: float):
-	if move_input:
-		velocity = move_input * SPEED
-	elif auto_walk:
-		var diff = auto_walk_distance
-		if auto_walk_side and diff >= Vector2.ZERO or not auto_walk_side and diff < Vector2.ZERO:
-			auto_walk = false
-			velocity = Vector2.ZERO
-		else:
-			velocity = auto_walk_distance.normalized() * SPEED
-	
+	if can_move:
+		if move_input:
+			velocity = move_input * SPEED
+		elif auto_walk:
+			var diff = auto_walk_distance
+			if auto_walk_side and diff >= Vector2.ZERO or not auto_walk_side and diff < Vector2.ZERO:
+				auto_walk = false
+				velocity = Vector2.ZERO
+			else:
+				velocity = auto_walk_distance.normalized() * SPEED
+	else:
+		velocity = Vector2.ZERO
+
 	move_and_slide()
