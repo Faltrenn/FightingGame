@@ -1,6 +1,8 @@
 class_name Dash extends Node
 
 
+signal end
+
 var direction: Vector2
 var speed: float
 var max_range: float
@@ -23,4 +25,5 @@ func _physics_process(delta: float):
 	if parent:
 		parent.position += direction * speed * delta
 		if abs(initial_position - parent.position).length() >= max_range:
+			end.emit()
 			queue_free()
