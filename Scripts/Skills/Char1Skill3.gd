@@ -14,9 +14,7 @@ func execute():
 		var dash = Dash.new()
 		player.add_child(dash)
 		dash.init(player.look_input, 800, 600)
-		var shape = CircleShape2D.new()
-		shape.radius = 100
-		var hitbox = Hitbox.new(shape)
+		var hitbox = Hitbox.circle(100)
 		player.add_child(hitbox)
 		hitbox.body_entered.connect(_hit)
 		dash.end.connect(hitbox.queue_free)
