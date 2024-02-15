@@ -14,14 +14,12 @@ func execute():
 		var dash = Dash.new()
 		player.add_child(dash)
 		dash.init(player.look_input, 800, 600)
-		var area = Area2D.new()
-		var cs = CollisionShape2D.new()
-		area.add_child(cs)
-		cs.shape = CircleShape2D.new()
-		cs.shape.radius = 100
-		player.add_child(area)
-		area.body_entered.connect(_hit)
-		dash.end.connect(area.queue_free)
+		var shape = CircleShape2D.new()
+		shape.radius = 100
+		var hitbox = Hitbox.new(shape)
+		player.add_child(hitbox)
+		hitbox.body_entered.connect(_hit)
+		dash.end.connect(hitbox.queue_free)
 		super.execute()
 
 func _hit(body: Node2D):
