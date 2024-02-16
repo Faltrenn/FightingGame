@@ -72,7 +72,7 @@ func _unhandled_input(event: InputEvent):
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_RIGHT:
 				auto_walk = true
-				auto_walk_position = event.position
+				auto_walk_position = mouse_position
 	
 	for i in range(0,4):
 		if event.is_action_pressed("skill_" + str(i+1)):

@@ -18,6 +18,7 @@ func execute():
 		player.add_child(hitbox)
 		hitbox.body_entered.connect(_hit)
 		dash.end.connect(hitbox.queue_free)
+		dash.end.connect(func (): hitted = [])
 		super.execute()
 
 func _hit(body: Node2D):

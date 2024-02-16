@@ -14,7 +14,6 @@ func init(p_direction: Vector2, p_speed: float, p_max_range: float):
 	
 	if p is Node2D:
 		if p is Player:
-			print("!")
 			p.can_move = false
 		parent = p
 		initial_position = parent.position

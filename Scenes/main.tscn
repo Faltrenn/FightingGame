@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c8rxkw2fl1hph"]
 
 [ext_resource type="PackedScene" uid="uid://b7f26b4uhxfgd" path="res://Scenes/Prefabs/player.tscn" id="1_behhn"]
-[ext_resource type="Resource" uid="uid://ds71pjdvttujx" path="res://Resources/char1.tres" id="2_vsgj2"]
+[ext_resource type="Resource" uid="uid://ds71pjdvttujx" path="res://Resources/char1.tres" id="2_0vlb5"]
 [ext_resource type="PackedScene" uid="uid://ccl5qjt0ayowv" path="res://Scenes/Components/skill_ui.tscn" id="3_fhyve"]
 [ext_resource type="Texture2D" uid="uid://cmb8ymxcbos52" path="res://Espantalho.png" id="4_rqnem"]
 [ext_resource type="Script" path="res://Scenes/Target.gd" id="4_yyibo"]
@@ -11,8 +11,11 @@ size = Vector2(40, 130)
 
 [node name="Main" type="Node2D"]
 
+[node name="Camera" type="Camera2D" parent="."]
+offset = Vector2(800, 450)
+
 [node name="Player" parent="." node_paths=PackedStringArray("skills_ui") instance=ExtResource("1_behhn")]
-character = ExtResource("2_vsgj2")
+character = ExtResource("2_0vlb5")
 skills_ui = [NodePath("../UI/HBoxContainer/SkillUI"), NodePath("../UI/HBoxContainer/SkillUI2"), NodePath("../UI/HBoxContainer/SkillUI3"), NodePath("../UI/HBoxContainer/SkillUI4")]
 
 [node name="Target" type="CharacterBody2D" parent="."]
