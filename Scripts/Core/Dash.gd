@@ -9,12 +9,15 @@ var max_range: float
 var initial_position: Vector2
 var parent: Node2D
 
-func init(p_direction: Vector2, p_speed: float, p_max_range: float):
+func init(p_direction: Vector2, p_speed: float, p_max_range: float, pass_trought: bool = true):
 	var p = get_parent()
 	
 	if p is Node2D:
 		if p is Player:
 			p.can_move = false
+			if pass_trought:
+				p.hitbox.disabled = true
+				end.connect(func (): p.hitbox.disabled = false)
 		parent = p
 		initial_position = parent.position
 		direction = p_direction

@@ -1,9 +1,10 @@
-class_name Player extends CharacterBody2D
+class_name Player extends Entity
 
 
 const SPEED := 300.0
 
 @onready var aim := $Aim
+@onready var collisor := $Hitbox as CollisionShape2D
 
 var move_input : Vector2:
 	get:
@@ -47,6 +48,7 @@ var auto_walk_distance : Vector2:
 var skills: Array[Skill] = [null, null, null, null]
 
 func _ready():
+	super._ready()
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	
 	if character:
