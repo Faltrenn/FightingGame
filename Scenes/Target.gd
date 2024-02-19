@@ -3,6 +3,8 @@ extends Entity
 @onready var damage_log = $DamageLog
 @onready var health_label = $Health
 
+@export var move := false
+
 var direction := 1
 var initial_position: Vector2
 
@@ -10,6 +12,9 @@ func _init():
 	damaged.connect(create_damage_label)
 	damaged.connect(func (_v): health_label.text = "Vida: " + str(health))
 	initial_position = position
+
+func _ready():
+	set_physics_process(move)
 
 func create_damage_label(amount: int):
 	var label = DamageLabel.new()

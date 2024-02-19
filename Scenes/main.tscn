@@ -1,13 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8rxkw2fl1hph"]
+[gd_scene load_steps=5 format=3 uid="uid://c8rxkw2fl1hph"]
 
 [ext_resource type="PackedScene" uid="uid://b7f26b4uhxfgd" path="res://Scenes/Prefabs/player.tscn" id="1_behhn"]
 [ext_resource type="Resource" uid="uid://ds71pjdvttujx" path="res://Resources/char1.tres" id="2_0vlb5"]
+[ext_resource type="PackedScene" uid="uid://bseo0isfbdgyg" path="res://Scenes/Prefabs/target.tscn" id="3_c8om3"]
 [ext_resource type="PackedScene" uid="uid://ccl5qjt0ayowv" path="res://Scenes/Components/skill_ui.tscn" id="3_fhyve"]
-[ext_resource type="Texture2D" uid="uid://cmb8ymxcbos52" path="res://Espantalho.png" id="4_rqnem"]
-[ext_resource type="Script" path="res://Scenes/Target.gd" id="4_yyibo"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8oeta"]
-size = Vector2(40, 130)
 
 [node name="Main" type="Node2D"]
 
@@ -18,35 +14,18 @@ offset = Vector2(800, 450)
 character = ExtResource("2_0vlb5")
 skills_ui = [NodePath("../UI/HBoxContainer/SkillUI"), NodePath("../UI/HBoxContainer/SkillUI2"), NodePath("../UI/HBoxContainer/SkillUI3"), NodePath("../UI/HBoxContainer/SkillUI4")]
 
-[node name="Target" type="CharacterBody2D" parent="."]
-position = Vector2(1280, 429)
-script = ExtResource("4_yyibo")
+[node name="Target" parent="." instance=ExtResource("3_c8om3")]
+move = true
 
-[node name="Health" type="Label" parent="Target"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = -80.0
-offset_right = 1.0
-offset_bottom = -57.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Vida: 100"
+[node name="Target2" parent="." instance=ExtResource("3_c8om3")]
+position = Vector2(1161, 281)
+move = true
 
-[node name="Image" type="Sprite2D" parent="Target"]
-texture = ExtResource("4_rqnem")
+[node name="Target3" parent="." instance=ExtResource("3_c8om3")]
+position = Vector2(377, 122)
 
-[node name="Hitbox" type="CollisionShape2D" parent="Target"]
-position = Vector2(0, 15)
-shape = SubResource("RectangleShape2D_8oeta")
-
-[node name="DamageLog" type="VBoxContainer" parent="Target"]
-offset_left = 87.0
-offset_top = -27.0
-offset_right = 127.0
-offset_bottom = 13.0
+[node name="Target4" parent="." instance=ExtResource("3_c8om3")]
+position = Vector2(433, 189)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
