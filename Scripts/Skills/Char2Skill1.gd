@@ -1,7 +1,9 @@
 class_name Char2Skill1 extends Skill
 
 
-var projectile = preload("res://Scenes/Prefabs/projectile.tscn")
+var projectile_tscn = preload("res://Scenes/Prefabs/projectile.tscn")
+
+const DAMAGE := 3.0
 
 func _ready():
 	cooldown = .1 # Define cooldown
@@ -19,7 +21,7 @@ func execute():
 		var collider = ray.get_collider()
 		ray.queue_free()
 		if collider is Entity:
-			var p = projectile.instantiate() as Projectile
+			var p = projectile_tscn.instantiate() as Projectile
 			get_node("/root").add_child(p)
 			p.on_hit.connect(_on_hit)
 			p.target = collider
@@ -28,5 +30,5 @@ func execute():
 
 func _on_hit(projectile: Projectile, body: Node2D):
 	if body == projectile.target:
-		body.make_damage(3)
+		body.make_damage(DAMAGE)
 		projectile.queue_free()

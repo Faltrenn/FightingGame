@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c8rxkw2fl1hph"]
 
 [ext_resource type="PackedScene" uid="uid://b7f26b4uhxfgd" path="res://Scenes/Prefabs/player.tscn" id="1_behhn"]
-[ext_resource type="Resource" uid="uid://ds71pjdvttujx" path="res://Resources/char1.tres" id="2_0vlb5"]
+[ext_resource type="Resource" uid="uid://bthuewdpq8bhs" path="res://Resources/char2.tres" id="2_21j7t"]
 [ext_resource type="PackedScene" uid="uid://bseo0isfbdgyg" path="res://Scenes/Prefabs/target.tscn" id="3_c8om3"]
 [ext_resource type="PackedScene" uid="uid://ccl5qjt0ayowv" path="res://Scenes/Components/skill_ui.tscn" id="3_fhyve"]
 
@@ -11,7 +11,7 @@
 offset = Vector2(800, 450)
 
 [node name="Player" parent="." node_paths=PackedStringArray("skills_ui") instance=ExtResource("1_behhn")]
-character = ExtResource("2_0vlb5")
+character = ExtResource("2_21j7t")
 skills_ui = [NodePath("../UI/HBoxContainer/SkillUI"), NodePath("../UI/HBoxContainer/SkillUI2"), NodePath("../UI/HBoxContainer/SkillUI3"), NodePath("../UI/HBoxContainer/SkillUI4")]
 
 [node name="Target" parent="." instance=ExtResource("3_c8om3")]
