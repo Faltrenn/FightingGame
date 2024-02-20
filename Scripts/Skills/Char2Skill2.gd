@@ -1,9 +1,10 @@
 class_name Char2Skill2 extends Skill
 
 
+const DAMAGE := 15.0
+
 var shape_cast : ShapeCast2D
 
-const DAMAGE := 15.0
 func _ready():
 	cooldown = .1 # Define cooldown
 	super._ready()

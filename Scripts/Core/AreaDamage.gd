@@ -33,6 +33,7 @@ func _tick():
 		if res.collider is Node2D:
 			collisions.append(res.collider)
 	tick.emit(collisions)
+	print(collisions)
 	ticks += 1
 	if ticks >= max_ticks:
 		queue_free()

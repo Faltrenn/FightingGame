@@ -22,6 +22,6 @@ func execute():
 		super.execute()
 
 func _hit(body: Node2D):
-	if body is Entity and body not in hitted:
+	if body != player and body is Entity and body not in hitted:
 		body.make_damage(DAMAGE)
 		hitted.append(body)

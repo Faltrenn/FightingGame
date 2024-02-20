@@ -1,9 +1,9 @@
 class_name Char2Skill1 extends Skill
 
 
-var projectile_tscn = preload("res://Scenes/Prefabs/projectile.tscn")
-
 const DAMAGE := 3.0
+
+var projectile_tscn = preload("res://Scenes/Prefabs/projectile.tscn")
 
 func _ready():
 	cooldown = .1 # Define cooldown
