@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource("1_x50t1")
-name = ""
+name = "Personagem 3"
 skills = Array[Script]([ExtResource("2_hqomo"), null, null, null])

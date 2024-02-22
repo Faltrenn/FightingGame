@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7f26b4uhxfgd"]
+[gd_scene load_steps=6 format=3 uid="uid://b7f26b4uhxfgd"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_lgpox"]
+[ext_resource type="Resource" uid="uid://ds71pjdvttujx" path="res://Resources/char1.tres" id="2_luu1y"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_n8gfn"]
 size = Vector2(75, 120)
@@ -15,6 +16,7 @@ orientation = 2
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(333, 578)
 script = ExtResource("1_lgpox")
+characters = Array[Resource("res://Resources/CharacterRes.gd")]([ExtResource("2_luu1y")])
 
 [node name="Mesh" type="MeshInstance2D" parent="."]
 mesh = SubResource("QuadMesh_n8gfn")
@@ -35,3 +37,17 @@ modulate = Color(1, 0, 0, 1)
 position = Vector2(60, 7.75)
 rotation = -0.785398
 mesh = SubResource("PlaneMesh_jefwq")
+
+[node name="Name" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -95.0
+offset_right = 1.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1

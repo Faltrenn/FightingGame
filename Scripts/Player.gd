@@ -42,8 +42,8 @@ var auto_walk_position : Vector2:
 var auto_walk_distance : Vector2:
 	get:
 		return (auto_walk_position - global_position)
-
-@export var character: CharacterRes
+@onready var name_label := $Name as Label
+@export var characters: Array[CharacterRes]
 @export var skills_ui: Array[SkillUI] = [null, null, null, null]
 var skills: Array[Skill] = [null, null, null, null]
 
@@ -51,19 +51,8 @@ func _ready():
 	super._ready()
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	
-	if character:
-		skills = []
-		var counter := -1
-		for skill in character.skills:
-			counter += 1
-			if skill:
-				var s = skill.new() as Skill
-				add_child(s)
-				skills.append(s)
-				s.player = self
-				skills_ui[counter].skill = s
-				continue
-			skills.append(skill)
+	if characters:
+		_load_char(characters[0])
 	else:
 		push_error("Character not defined in ", name)
 
@@ -75,6 +64,8 @@ func _unhandled_input(event: InputEvent):
 			if event.button_index == MOUSE_BUTTON_RIGHT:
 				auto_walk = true
 				auto_walk_position = mouse_position
+	if event.as_text().is_valid_int():
+		_load_char(characters[int(event.as_text())-1])
 	
 	for i in range(0,4):
 		if event.is_action_pressed("skill_" + str(i+1)):
@@ -99,3 +90,23 @@ func _physics_process(_delta: float):
 		velocity = Vector2.ZERO
 
 	move_and_slide()
+
+func _load_char(character: CharacterRes):
+	name_label.text = character.name
+	for child in get_children():
+		if child is Skill:
+			child.queue_free()
+	for s_ui in skills_ui:
+		s_ui.skill = null
+	skills = []
+	var counter := -1
+	for skill in character.skills:
+		counter += 1
+		if skill:
+			var s = skill.new() as Skill
+			add_child(s)
+			skills.append(s)
+			s.player = self
+			skills_ui[counter].skill = s
+			continue
+		skills.append(skill)
