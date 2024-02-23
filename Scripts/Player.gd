@@ -96,8 +96,6 @@ func _load_char(character: CharacterRes):
 	for child in get_children():
 		if child is Skill:
 			child.queue_free()
-	for s_ui in skills_ui:
-		s_ui.skill = null
 	skills = []
 	var counter := -1
 	for skill in character.skills:
@@ -109,4 +107,6 @@ func _load_char(character: CharacterRes):
 			s.player = self
 			skills_ui[counter].skill = s
 			continue
+		else:
+			skills_ui[counter].skill = null
 		skills.append(skill)

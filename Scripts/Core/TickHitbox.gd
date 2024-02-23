@@ -3,12 +3,9 @@ class_name TickHitbox extends Hitbox
 
 signal tick(bodies: Array[Node2D])
 
-var max_ticks : int
-var tick_time : float
-var timer := Timer.new()
-var insta : bool
+var timer : TickTimer
 
-func _init(hitbox: Hitbox, p_max_ticks: int, p_tick_time: float, p_position := Vector2.ZERO, p_insta := false):
+func _init(hitbox: Hitbox, ticks: int, tick_time: float, p_position := Vector2.ZERO, insta := false):
 	old_collision = hitbox.old_collision
 	exclude = hitbox.exclude
 	shape = hitbox.shape
@@ -16,23 +13,14 @@ func _init(hitbox: Hitbox, p_max_ticks: int, p_tick_time: float, p_position := V
 	
 	position = p_position
 	
-	max_ticks = p_max_ticks
-	tick_time = p_tick_time
-	insta = p_insta
-	
+	timer = TickTimer.new(ticks, tick_time, insta)
 	add_child(timer)
-	timer.wait_time = tick_time
-	timer.autostart = true
-	timer.timeout.connect(_tick)
+	timer.tick.connect(_tick)
+	timer.end.connect(queue_free)
 
-func _ready():
-	if insta:
-		force_shapecast_update()
-		_tick()
+func _enter_tree():
+	force_shapecast_update()
 
 func _tick():
 	collide()
 	tick.emit(old_collision)
-	max_ticks -= 1
-	if max_ticks == 0:
-		queue_free()
