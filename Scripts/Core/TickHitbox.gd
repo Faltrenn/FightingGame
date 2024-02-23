@@ -11,9 +11,11 @@ func _init(hitbox: Hitbox, ticks: int, tick_time: float, p_position := Vector2.Z
 	shape = hitbox.shape
 	target_position = hitbox.target_position
 	
+	if insta: ready.connect(_tick)
+	
 	position = p_position
 	
-	timer = TickTimer.new(ticks, tick_time, insta)
+	timer = TickTimer.new(ticks - int(insta), tick_time)
 	add_child(timer)
 	timer.tick.connect(_tick)
 	timer.end.connect(queue_free)

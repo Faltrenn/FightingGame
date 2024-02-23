@@ -11,15 +11,9 @@ func _ready():
 
 func execute():
 	if timer.is_stopped():
-		var ray = RayCast2D.new()
-		ray.target_position = Vector2.ZERO
+		var ray = ScreenRay.new(player.mouse_position)
 		get_node("/root").add_child(ray)
-		ray.position = player.mouse_position
-		ray.hit_from_inside = true
-		ray.force_raycast_update()
-		
-		var collider = ray.get_collider()
-		ray.queue_free()
+		var collider = ray.collide()
 		if collider is Entity:
 			var p = projectile_tscn.instantiate() as Projectile
 			get_node("/root").add_child(p)

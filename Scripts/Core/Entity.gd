@@ -17,4 +17,3 @@ func _ready():
 	hitbox = find_child("Hitbox") as CollisionShape2D
 	if not hitbox:
 		push_error("Entity sem Hitbox em: ", name)
-	

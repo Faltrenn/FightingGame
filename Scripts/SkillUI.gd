@@ -16,7 +16,6 @@ var skill: Skill:
 			else:
 				ready.connect(func(): reset(true))
 		else:
-			print("?")
 			reset(false)
 
 func _ready():

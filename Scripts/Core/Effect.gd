@@ -14,7 +14,7 @@ func start():
 	pass
 
 func tick():
-	print("tick")
+	pass
 
 func end():
 	pass
