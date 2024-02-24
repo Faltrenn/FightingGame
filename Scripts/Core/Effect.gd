@@ -2,13 +2,12 @@ class_name Effect extends Node
 
 
 var timer : TickTimer
+var stacks := 0
 
-func _init(ticks: int = 0, tick_time: float = 0, insta := false):
-	if ticks != 0 and tick_time != 0:
-		timer = TickTimer.new(ticks - int(insta), tick_time)
-		add_child(timer)
-		timer.tick.connect(tick)
-	ready.connect(start)
+func set_tick_timer(ticks: int, tick_time: float):
+	timer = TickTimer.new(ticks, tick_time)
+	add_child(timer)
+	timer.tick.connect(tick)
 
 func start():
 	pass

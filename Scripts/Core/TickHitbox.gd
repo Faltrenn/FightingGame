@@ -18,7 +18,7 @@ func _init(hitbox: Hitbox, ticks: int, tick_time: float, p_position := Vector2.Z
 	timer = TickTimer.new(ticks - int(insta), tick_time)
 	add_child(timer)
 	timer.tick.connect(_tick)
-	timer.end.connect(queue_free)
+	timer.last_tick.connect(queue_free)
 
 func _enter_tree():
 	force_shapecast_update()
