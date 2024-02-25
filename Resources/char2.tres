@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="CharacterRes" load_steps=4 format=3 uid="uid://bthuewdpq8bhs"]
+[gd_resource type="Resource" script_class="CharacterRes" load_steps=5 format=3 uid="uid://bthuewdpq8bhs"]
 
 [ext_resource type="Script" path="res://Resources/CharacterRes.gd" id="1_a625s"]
 [ext_resource type="Script" path="res://Scripts/Skills/Char2Skill1.gd" id="2_ftnw3"]
 [ext_resource type="Script" path="res://Scripts/Skills/Char2Skill2.gd" id="3_obn6y"]
+[ext_resource type="Script" path="res://Scripts/Skills/Char2Skill3.gd" id="4_w7eb7"]
 
 [resource]
 script = ExtResource("1_a625s")
 name = "Einna"
-skills = Array[Script]([ExtResource("2_ftnw3"), ExtResource("3_obn6y"), null, null])
+skills = Array[Script]([ExtResource("2_ftnw3"), ExtResource("3_obn6y"), ExtResource("4_w7eb7"), null])

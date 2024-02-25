@@ -21,4 +21,5 @@ func execute():
 func _on_hit(projectile: Projectile, body: Node2D):
 	if body == projectile.target:
 		body.make_damage(DAMAGE)
+		body.add_effect(HotFire.new())
 		projectile.queue_free()

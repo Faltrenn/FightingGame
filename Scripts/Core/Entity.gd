@@ -19,15 +19,6 @@ var health : int = 100:
 
 var shield : int = 0
 
-func shield_damage(amount: int) -> int:
-	var rest = shield - amount
-	if rest >= 0:
-		shield = rest
-		return 0
-	else:
-		shield = 0
-		return -rest
-
 func make_damage(amount: int):
 	var rest = shield - amount
 	if rest >= 0:

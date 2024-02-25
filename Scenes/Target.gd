@@ -15,6 +15,7 @@ func _init():
 
 func _ready():
 	set_physics_process(move)
+	super._ready()
 
 func create_damage_label(amount: int):
 	var label = DamageLabel.new()
