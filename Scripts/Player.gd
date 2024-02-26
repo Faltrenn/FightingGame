@@ -1,8 +1,6 @@
 class_name Player extends Entity
 
 
-const SPEED := 300.0
-
 @onready var aim := $Aim
 @onready var collisor := $Hitbox as CollisionShape2D
 
@@ -49,6 +47,7 @@ var skills: Array[Skill] = [null, null, null, null]
 
 func _ready():
 	super._ready()
+	speed = 300.0
 	shield = 0
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	
@@ -79,14 +78,14 @@ func _process(_delta:float):
 func _physics_process(_delta: float):
 	if can_move:
 		if move_input:
-			velocity = move_input * SPEED
+			velocity = move_input * speed
 		elif auto_walk:
 			var diff = auto_walk_distance
 			if auto_walk_side and diff >= Vector2.ZERO or not auto_walk_side and diff < Vector2.ZERO:
 				auto_walk = false
 				velocity = Vector2.ZERO
 			else:
-				velocity = auto_walk_distance.normalized() * SPEED
+				velocity = auto_walk_distance.normalized() * speed
 	else:
 		velocity = Vector2.ZERO
 

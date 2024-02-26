@@ -8,4 +8,5 @@ func _ready():
 func execute():
 	if timer.is_stopped():
 		player.add_effect(FireShield.new())
+		player.add_effect(HotSpeed.new())
 		super.execute()

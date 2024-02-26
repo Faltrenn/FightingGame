@@ -5,11 +5,14 @@ signal body_entered(body: Node2D)
 
 var old_collision : Array[Node2D] = []
 var exclude : Array[Node2D] = []
+var show_shape : ShowShape
 
 func _init(p_shape: Shape2D, p_exclude: Array[Node2D] = []):
 	shape = p_shape
 	exclude = p_exclude
 	target_position = Vector2.ZERO
+	show_shape = ShowShape.new(shape, self)
+	add_child(show_shape)
 
 func _physics_process(_delta: float):
 	collide()
@@ -33,9 +36,8 @@ func one_shot():
 	force_shapecast_update()
 	collide()
 	queue_free()
-	var show_shape = ShowShape.new(shape, not old_collision.is_empty())
-	show_shape.position = global_position
-	get_node("/root").add_child(show_shape)
+	show_shape.reparent(get_node("/root"))
+	show_shape.set_timer()
 
 static func circle(radius: float, p_exclude: Array[Node2D] = []) -> Hitbox:
 	var s = CircleShape2D.new()

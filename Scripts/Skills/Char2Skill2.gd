@@ -3,7 +3,7 @@ class_name Char2Skill2 extends Skill
 
 const DAMAGE := 15.0
 
-var shape_cast : ShapeCast2D
+var shape_cast : Hitbox
 
 func _ready():
 	cooldown = .1 # Define cooldown
@@ -22,3 +22,4 @@ func execute():
 func _hit(body: Node2D):
 	if body != player and body is Entity:
 		body.make_damage(DAMAGE)
+		body.add_effect(HotFire.new())

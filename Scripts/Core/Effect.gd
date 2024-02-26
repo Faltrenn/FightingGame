@@ -3,24 +3,34 @@ class_name Effect extends Node
 
 var entity : Entity
 
-var timer : TickTimer
+var tick_timer : TickTimer
+var timer : Timer
 var stacks := 0
 
 func _ready():
 	entity = get_parent().get_parent()
-	start()
+	_start()
 
-func set_tick_timer(ticks: int, tick_time: float):
-	timer = TickTimer.new(ticks, tick_time)
+
+func _set_tick_timer(ticks: int, tick_time: float):
+	tick_timer = TickTimer.new(ticks, tick_time)
+	add_child(tick_timer)
+	tick_timer.tick.connect(_tick)
+	tick_timer.end.connect(_end)
+
+func _set_timer(time: float):
+	timer = Timer.new()
+	timer.wait_time = time
+	timer.one_shot = true
+	timer.autostart = true
+	timer.timeout.connect(_end)
 	add_child(timer)
-	timer.tick.connect(tick)
-	timer.end.connect(end)
 
-func start():
+func _start():
 	pass
 
-func tick():
+func _tick():
 	pass
 
-func end():
+func _end():
 	pass

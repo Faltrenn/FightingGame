@@ -7,6 +7,8 @@ signal damaged(amount: int)
 @export var shield_label : Label
 @export var damage_log : VBoxContainer
 
+var speed := .0
+
 var hitbox : CollisionShape2D
 var _effects := Node.new()
 var effects : Array[Effect]:

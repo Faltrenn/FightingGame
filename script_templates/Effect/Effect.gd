@@ -4,11 +4,11 @@ class_name SomeEffect extends Effect
 const TICKS := 0
 const TICK_TIME := .0
 
-func start():
+func _start():
 	pass
 
-func tick():
+func _tick():
 	pass
 
-func end():
+func _end():
 	pass

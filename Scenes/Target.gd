@@ -28,7 +28,7 @@ func shoot():
 
 func _hit(_projectile: Projectile, body: Node2D):
 	if body is Entity and body != self:
-		body.make_damage(2)
+		body.make_damage(4)
 
 func _physics_process(delta: float):
 	position += Vector2.DOWN * direction * 250.0 * delta
