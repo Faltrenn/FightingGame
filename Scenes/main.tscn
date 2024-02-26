@@ -18,10 +18,12 @@ skills_ui = [NodePath("../UI/HBoxContainer/SkillUI"), NodePath("../UI/HBoxContai
 
 [node name="Target" parent="." instance=ExtResource("3_c8om3")]
 move = true
+shoot_dir = Vector2(-1, 0)
 
 [node name="Target2" parent="." instance=ExtResource("3_c8om3")]
 position = Vector2(1161, 281)
 move = true
+shoot_dir = Vector2(-1, 0)
 
 [node name="Target3" parent="." instance=ExtResource("3_c8om3")]
 position = Vector2(377, 122)

@@ -1,7 +1,7 @@
 class_name Projectile extends Node2D
 
 
-signal on_hit(projectile: Projectile, body)
+signal on_hit(projectile: Projectile, body: Node2D)
 
 var speed: float
 var direction: Vector2

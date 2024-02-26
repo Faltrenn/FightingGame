@@ -6,22 +6,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8oeta"]
 size = Vector2(40, 130)
 
-[node name="Target" type="CharacterBody2D"]
+[node name="Target" type="CharacterBody2D" node_paths=PackedStringArray("health_label", "shield_label", "damage_log")]
 position = Vector2(1280, 429)
 script = ExtResource("1_ey5bg")
-
-[node name="Health" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = -80.0
-offset_right = 1.0
-offset_bottom = -57.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Vida: 100"
+health_label = NodePath("VBoxContainer/Health")
+shield_label = NodePath("VBoxContainer/Shield")
+damage_log = NodePath("DamageLog")
 
 [node name="Image" type="Sprite2D" parent="."]
 texture = ExtResource("2_odsns")
@@ -35,3 +25,25 @@ offset_left = 87.0
 offset_top = -27.0
 offset_right = 127.0
 offset_bottom = 13.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -110.0
+offset_right = 1.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Health" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shield" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1

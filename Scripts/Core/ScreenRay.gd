@@ -8,4 +8,5 @@ func _init(p_position: Vector2):
 
 func collide() -> Object:
 	force_raycast_update()
+	queue_free()
 	return get_collider()

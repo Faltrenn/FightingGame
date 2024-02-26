@@ -7,10 +7,5 @@ func _ready():
 
 func execute():
 	if timer.is_stopped():
-		var ray = ScreenRay.new(player.mouse_position)
-		get_node("/root").add_child(ray)
-		var collider = ray.collide()
-		print(collider)
-		if collider is Entity:
-			collider.add_effect(HotFire.new())
-			super.execute()
+		player.add_effect(FireShield.new())
+		super.execute()
