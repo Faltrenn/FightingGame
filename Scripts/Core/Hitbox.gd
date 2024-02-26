@@ -11,7 +11,7 @@ func _init(p_shape: Shape2D, p_exclude: Array[Node2D] = []):
 	shape = p_shape
 	exclude = p_exclude
 	target_position = Vector2.ZERO
-	show_shape = ShowShape.new(shape, self)
+	show_shape = ShowShape.new(shape)
 	add_child(show_shape)
 
 func _physics_process(_delta: float):

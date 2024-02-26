@@ -13,12 +13,11 @@ size = Vector2(75, 120)
 size = Vector2(30, 8)
 orientation = 2
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("name_label", "skills_ui", "health_label", "shield_label", "damage_log")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("name_label", "health_label", "shield_label", "damage_log")]
 position = Vector2(333, 578)
 script = ExtResource("1_lgpox")
 name_label = NodePath("VBoxContainer/Name")
 characters = Array[Resource("res://Resources/CharacterRes.gd")]([ExtResource("2_luu1y")])
-skills_ui = []
 health_label = NodePath("VBoxContainer/Health")
 shield_label = NodePath("VBoxContainer/Shield")
 damage_log = NodePath("Damages")
