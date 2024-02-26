@@ -1,7 +1,7 @@
 class_name Char2Skill1 extends Skill
 
 
-const DAMAGE := 3.0
+const DAMAGE := 5
 
 func _ready():
 	cooldown = .1 # Define cooldown

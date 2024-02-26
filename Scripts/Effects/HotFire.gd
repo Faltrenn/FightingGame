@@ -16,7 +16,6 @@ func _start():
 			queue_free()
 			return
 	_set_tick_timer(TICKS, TICK_TIME)
-	tick_timer.end.connect(queue_free)
 
 func _tick():
 	target.make_damage(damage)

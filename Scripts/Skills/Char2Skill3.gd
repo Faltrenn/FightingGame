@@ -1,4 +1,4 @@
-class_name SomeSkill extends Skill
+class_name Char2Skill3 extends Skill
 
 
 func _ready():

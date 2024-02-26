@@ -33,4 +33,4 @@ func _tick():
 	pass
 
 func _end():
-	pass
+	queue_free()
