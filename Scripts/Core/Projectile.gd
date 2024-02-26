@@ -2,6 +2,7 @@ class_name Projectile extends Node2D
 
 
 signal on_hit(projectile: Projectile, body: Node2D)
+signal on_max_range(projectile: Projectile)
 
 var speed: float
 var direction: Vector2
@@ -25,4 +26,5 @@ func _physics_process(delta: float):
 	if direction:
 		if abs(initial_position - position).length() >= max_range:
 			queue_free()
+			on_max_range.emit(self)
 		position += direction * speed * delta

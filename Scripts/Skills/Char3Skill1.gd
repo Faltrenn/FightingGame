@@ -9,13 +9,22 @@ func _ready():
 
 func execute():
 	if timer.is_stopped():
-		var th = TickHitbox.new(Hitbox.circle(100), 10, .1, player.mouse_position, true)
-		th.tick.connect(_hit)
-		add_child(th)
-		
+		var p = Projectile.new(player.position, player.look_input, 650)
+		get_node("/root").add_child(p)
+		p.on_hit.connect(_hit)
+		p.on_max_range.connect(_create_area)
 		super.execute()
 
-func _hit(bodies: Array[Node2D]):
-	for body in bodies:
-		if body != player and body is Entity:
-			body.make_damage(DAMAGE)
+func _hit(projectile: Projectile, body: Node2D):
+	if body != player and body is Entity:
+		_create_area(projectile)
+		projectile.queue_free()
+
+func _create_area(projectile: Projectile):
+	var h = Hitbox.circle(100, [player])
+	h.position = projectile.position
+	get_node("/root").add_child(h)
+	h.one_shot()
+	for col in h.old_collision:
+		if col is Entity:
+			col.make_damage(DAMAGE)
