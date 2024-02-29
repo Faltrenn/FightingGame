@@ -8,10 +8,8 @@ class_name Target extends Entity
 var direction := 1
 var initial_position: Vector2
 
-func _init():
-	initial_position = position
-
 func _ready():
+	initial_position = position
 	set_physics_process(move)
 	if shoot_dir:
 		var timer = Timer.new()
